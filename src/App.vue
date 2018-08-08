@@ -32,10 +32,10 @@ export default{
   },
   mounted:function(){
     let query = new AV.Query('TodoFile');
+    query.equalTo('ownerid', this.userName.id);
     query.find().then(function(result){
         this.todos = result
     }.bind(this))
-    console.log(this.userName)
   },
   methods:{
     toSelf(){
@@ -48,10 +48,12 @@ export default{
     submit:function(){
     let query = new AV.Query('TodoFile');
     let getThing = [];
+    var currentUser = AV.User.current();
      if(this.thing!==''){
         let TodoFile = AV.Object.extend('TodoFile');
         let todoFile = new TodoFile();
         todoFile.set('thing',this.thing)
+        todoFile.set('ownerid', currentUser.id);
         todoFile.save().then(function (todo){
           this.todos.push(todo)
      }.bind(this),
