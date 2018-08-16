@@ -18,6 +18,7 @@
           <div style='float:left;margin-top:10px'><a @click ='toforget'>忘记密码？</a></div>
           <div style='float:right;margin-top:10px'><a @click = 'toNewUser'>注册账号</a></div>
       </div>
+
       <div class="copyright">李杨有限公司 版权所有©2016-2018 技术支持电话：888-88888888</div>
 </div>
 </template>
